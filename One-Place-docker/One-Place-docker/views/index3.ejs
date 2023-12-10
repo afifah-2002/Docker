@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">  
+    <title>Todo List App in JavaScript | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Iconscout Link For Icons -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  </head>
+  <body>
+    <!-- input -->
+    <div class="wrapper">
+      <div class="task-input">
+        <form action="/add/todo" method="POST"> 
+        <!-- <img src="bars-icon.svg" alt="icon"> -->
+        <input type="text" name="todo" placeholder="Add a new task">
+        <button type="submit" value="Add Todo" name="button" class="button"> Save</button>
+      </form>
+      </div>
+
+
+
+      <div class="controls">
+        <div class="filters">
+          <span class="active" id="all">All</span>
+          <a href="/pending" style="text-decoration: none;"><span id="pending">Pending</span></a>
+          <a href="/completed" style="text-decoration: none;"><span id="completed">Completed</span></a>
+        </div>
+        <button class="clear-btn">Clear All</button>
+      </div>
+
+
+      <ul class="task-box">
+        <% todo.forEach(todos => { %>
+        <li class="task" 
+            <% if(todos.done == true) 
+                { %>style= "text-decoration: line-through;"
+                <% } %> >
+                    <%= todos.todo %>
+                    <span>
+
+            </label>
+            <div class="settings">
+                <!-- <i class="uil uil-ellipsis-h"></i> -->
+                <ul class="task-menu">
+                    <% if(todos.done == false)
+                    { %> 
+                      <li style="display: inline"; ><a href="/update/todo/<%=todos._id%>"><i class="fa">&#xf00c;</i></a></li>
+                      <% } %>
+                    <li style="display: inline";><a href="/delete/todo/<%= todos._id %>" ><i class="uil uil-trash"></i> </a></li> 
+                 </ul>
+            </div>
+        </li>
+        <% }) %>
+    </ul>
+    </div>
+
+    <!-- <script src="script.js"></script>    -->
+
+  </body>
+</html>
